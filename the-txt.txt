@@ -1,0 +1,19 @@
+
+To resolve this issue, we need to ensure that the Product type includes the group property with members as expected by ProductWithGroupAndMembers. Let's update the Product type in types.ts to include the group property with the required members array.
+
+Here's what we need to do:
+
+1. Update the Product type in types.ts to include the group property with the required members array.
+2. Ensure that the Product type is correctly used in the ProductList component.
+
+Office/Stationery
+Sports
+Health/Beauty
+Women 
+Home/Kitchen
+Summer Fashion
+Winter Fashion
+Kids
+Electronics
+Men
+Heavy Machinery

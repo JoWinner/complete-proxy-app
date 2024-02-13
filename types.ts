@@ -1,0 +1,76 @@
+import { Server as NetServer, Socket } from "net";
+import { NextApiResponse } from "next";
+import { Server as SocketIOServer } from "socket.io";
+import { Group, Member, Profile } from "@prisma/client"
+
+export type GroupWithMembersWithProfiles = Group & {
+  members: (Member & { profile: Profile })[];
+};
+
+export type ProductWithGroupAndMembers = Product & {
+  group: GroupWithMembersWithProfiles;
+};
+
+
+export type NextApiResponseServerIo = NextApiResponse & {
+  socket: Socket & {
+    server: NetServer & {
+      io: SocketIOServer;
+    };
+  };
+};
+export interface Store {
+  id: string;
+  storeName: string;
+  username: string;
+  logoUrl: string;
+  storeMail: string;
+  storePhone: string;
+  facebook: string;
+  instagram: string;
+  tiktok: string;
+  telegram: string;
+  xTwitter: string;
+  youtube: string;
+  whatsApp: string;
+  country: Country;
+  profile: Profile;
+  // createdAt: Date;
+  // updatedAt: Date;
+}
+export interface Product {
+  id: string;
+  name: string;
+  price: number;
+  description: string;
+  category: Category;
+  currency: Currency;
+  weight: string | null;
+  moq: number;
+  isArchived: boolean;
+  images: Image[];
+  groupId: string;
+  group: GroupWithMembersWithProfiles;
+}
+
+export interface Image {
+  id: string;
+  url: string;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+}
+
+export interface Currency {
+  id: string;
+  name: string;
+  symbol: string;
+}
+export interface Country{
+  id: string;
+  name: string;
+  profiles: Profile[];
+  stores: Store[];
+ }
