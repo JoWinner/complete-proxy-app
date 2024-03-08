@@ -28,7 +28,7 @@ export const DashboardMobileToggle = async (
         <div className="w-[72px]">
           <NavigationSidebar />
         </div>
-        <ActivitySidebar role={profile?.role || ''}  profileId={profile?.id || ''} isAgent={profile?.isAgent || false}/>
+        <ActivitySidebar role={profile?.role || ''}  profileId={profile?.id || ''} isSeller={profile?.isSeller || false}/>
       </SheetContent>
     </Sheet>
   )

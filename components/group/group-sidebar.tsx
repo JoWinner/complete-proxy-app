@@ -20,7 +20,9 @@ import { GroupSearch } from "./group-search";
 import { GroupSection } from "./group-section";
 import { GroupChannel } from "./group-channel";
 import { GroupMember } from "./group-member";
+import { CreateOrderButton } from "@/components/create-order-button";
 import Link from "next/link";
+import { CreateOrder } from "@/types";
 
 interface GroupSidebarProps {
   groupId: string;
@@ -68,6 +70,30 @@ export const GroupSidebar = async ({ groupId }: GroupSidebarProps) => {
       },
     },
   });
+
+  const groupProducts = await db.product.findMany({
+    where: {
+      groupId: groupId,
+      isArchived: false,
+    },
+    include: {
+      images: true,
+      // group: true,
+    },
+  });
+
+  const formattedProducts: CreateOrder[] = groupProducts.map((item) => ({
+    id: item.id,
+    name: item.name,
+    sellerId: item.profileId,
+    groupId: item.groupId || '', // Ensuring groupId is never null
+    price: item.price.toString(),
+    moq: item.moq.toString(),
+    weight: item.weight || "N/A",
+    images: item.images,
+  }));
+
+  console.log("Formatted", formattedProducts);
 
   const store = await db.group.findUnique({
     where: {
@@ -126,6 +152,9 @@ export const GroupSidebar = async ({ groupId }: GroupSidebarProps) => {
           <Globe className="h-4 w-4 mr-2 text-indigo-500" />
         </Link>
       </div>
+
+      <CreateOrderButton products={formattedProducts} />
+
       <ScrollArea className="flex-1 px-3">
         <div className="mt-2">
           <GroupSearch

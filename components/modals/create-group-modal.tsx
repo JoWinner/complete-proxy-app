@@ -65,7 +65,7 @@ export const CreateGroupModal = () => {
       router.refresh();
       onClose();
     } catch (error) {
-      toast.error("You are not a verified agent.");
+      toast.error("You are not a verified seller");
       // console.log(error);
     }
   };
@@ -80,7 +80,7 @@ export const CreateGroupModal = () => {
       <DialogContent className="bg-white text-black p-0 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-2xl text-center font-bold">
-            Customize your group
+            Create new sales group
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
             Give your group a personality with a name and an image. You can
@@ -134,7 +134,9 @@ export const CreateGroupModal = () => {
                 name="maxMembers"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">Maximum Members</FormLabel>
+                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
+                      Maximum Members
+                    </FormLabel>
                     <FormControl>
                       <Input
                         disabled={isLoading}

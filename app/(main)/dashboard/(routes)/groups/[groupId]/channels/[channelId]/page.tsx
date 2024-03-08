@@ -32,7 +32,6 @@ const ChannelIdPage = async ({ params }: ChannelIdPageProps) => {
       id: params.channelId,
     },
   });
-  console.log("ChannelId", params.channelId);
 
   const member = await db.member.findFirst({
     where: {

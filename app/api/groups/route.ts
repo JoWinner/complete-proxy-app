@@ -14,10 +14,10 @@ export async function POST(req: Request) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    if (!profile.isAgent) {
+    if (!profile.isSeller) {
       return new NextResponse("Forbidden", { status: 403 });
     }
-    
+
     const group = await db.group.create({
       data: {
         profileId: profile.id,
@@ -28,16 +28,13 @@ export async function POST(req: Request) {
         channels: {
           create: [
             { name: "general", profileId: profile.id },
-            { name: "product(s) info", type:"INFO", profileId: profile.id }
-
-          ]
+            { name: "product(s) info", type: "INFO", profileId: profile.id },
+          ],
         },
         members: {
-          create: [
-            { profileId: profile.id, role: MemberRole.ADMIN }
-          ]
-        }
-      }
+          create: [{ profileId: profile.id, role: MemberRole.ADMIN }],
+        },
+      },
     });
 
     return NextResponse.json(group);

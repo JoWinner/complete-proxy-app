@@ -121,8 +121,10 @@ export const ChatItem = ({
   const isOwner = currentMember.id === member.id;
   const canDeleteMessage = !deleted && (isAdmin || isModerator || isOwner);
   const canEditMessage = !deleted && isOwner && !fileUrl;
-  const isPDF = fileType === "pdf" && fileUrl;
-  const isImage = !isPDF && fileUrl;
+  const isPDF = fileType === "pdf" && !!fileUrl;
+  const isImage =
+    ["jpg", "jpeg", "png", "gif"].includes(fileType || "") && !!fileUrl;
+  const isVideo = ["mp4", "mov", "wmv"].includes(fileType || "") && !!fileUrl;
 
   return (
     <div className="relative group flex items-center hover:bg-black/5 p-4 transition w-full">
@@ -176,6 +178,17 @@ export const ChatItem = ({
               >
                 PDF File
               </a>
+            </div>
+          )}
+          {isVideo && (
+            <div className="relative aspect-square rounded-md mt-2 overflow-hidden border flex items-center bg-secondary h-48 w-48">
+              <video
+                src={fileUrl}
+                controls
+                className="w-full h-full object-cover"
+              >
+                Your browser does not support the video.
+              </video>
             </div>
           )}
           {!fileUrl && !isEditing && (

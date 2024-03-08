@@ -1,9 +1,11 @@
-import { Channel, ChannelType, Group } from "@prisma/client";
+import { Channel, ChannelType, Group  } from "@prisma/client";
 import { create } from "zustand";
-
-export type ModalType = "createGroup" | "invite" | "editGroup" | "members" | "createChannel" | "leaveGroup" | "deleteGroup" | "deleteChannel" | "editChannel" | "messageFile" | "deleteMessage";
+import { CreateOrder, OrderInfo } from "@/types";
+export type ModalType = "createGroup" | "invite" | "editGroup" | "members" | "createChannel" | "leaveGroup" | "deleteGroup" | "deleteChannel" | "editChannel" | "messageFile" | "deleteMessage" | "createOrder" | "viewOrderInfo";
 
 interface ModalData {
+  products?: CreateOrder[];
+  orderDetails?: OrderInfo;
   group?: Group;
   channel?: Channel;
   channelType?: ChannelType;

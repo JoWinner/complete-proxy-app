@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertOctagon, UserSquare, Box, UserCheck, Store } from "lucide-react";
+import { AlertOctagon, UserSquare, UserCheck, ShoppingCart, } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export const SuperAdminSidebar = ({
@@ -17,6 +17,13 @@ export const SuperAdminSidebar = ({
         <UserCheck className="flex-shrink-0 w-5 h-5 text-zinc-500 dark:text-zinc-400" />
       ),
       path: `/super-admin/overview`,
+    },
+    {
+      label: "Manage Orders",
+      icon: (
+        <ShoppingCart className="flex-shrink-0 w-5 h-5 text-zinc-500 dark:text-zinc-400" />
+      ),
+      path: `/super-admin/all-orders`,
     },
     {
       label: "Products Status",

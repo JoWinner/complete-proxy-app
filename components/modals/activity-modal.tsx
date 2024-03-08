@@ -58,8 +58,8 @@ export const ActivityModal = () => {
   };
   return (
     <StoreModal
-      title="Create new store"
-      description="Add a new store to manage products and categories separately"
+      title="Create store"
+      description="Add a store to customize storefront, manage products and orders"
       isOpen={storeModal.isOpen}
       onClose={storeModal.onClose}
     >

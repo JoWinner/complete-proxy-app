@@ -88,10 +88,10 @@ export const EditGroupModal = () => {
       <DialogContent className="bg-white text-black p-0 overflow-hidden">
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-2xl text-center font-bold">
-            Customize your group
+            Edit group
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Give your group a personality with a name and an image. You can always change it later.
+            Edit your sales group by changing name or image to tell buyers more about what buyers should expect.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>

@@ -89,7 +89,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         name: "",
         description: "",
         images: [],
-        price: 0,
+        price: 10.00,
         groupId: "",
         weight: "",
         moq: 100,
@@ -263,7 +263,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   <FormMessage />
                 </FormItem>
               )}
-            />{" "}
+            />
             <FormField
               control={form.control}
               name="categoryId"
@@ -303,7 +303,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                 name="weight"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Weight</FormLabel>
+                    <FormLabel>Weight(kg)</FormLabel>
                     <FormControl>
                       <Input
                         disabled={loading}

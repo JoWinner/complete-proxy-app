@@ -30,8 +30,8 @@ const unbounded = Unbounded({
 });
 
 export const metadata: Metadata = {
-  title: "Hanabis Marketplace",
-  description: "Own your store, collect payments your own way, connect products to sell/buy in groups through a better organized chats/channels and interactive marketplace.",
+  title: "Soplano B2B Ecommerce",
+  description: "Revolutionizing B2B Ecommerce with a Global Trading Platform. Connect with other buyers worldwide to negotiate, and transact with verified suppliers. Experience seamless order management, quality assurance, and transparent fulfillment for your business growth.",
 };
 
 export default function RootLayout({

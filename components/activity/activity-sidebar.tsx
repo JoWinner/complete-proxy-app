@@ -1,21 +1,26 @@
 "use client";
 
-import {  Box, UserCheck, Store, CreditCard, ShieldCheck  } from "lucide-react";
+import {
+  Box,
+  Boxes,
+  UserCheck,
+  Store,
+  ShoppingCart,
+  CreditCard,
+  ShieldCheck,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export const ActivitySidebar = ({
   profileId,
-  isAgent,
-role
+  isSeller,
+  role,
 }: {
   profileId?: string;
-    isAgent: boolean;
-    role: string;
-  }) => {
-  
+  isSeller: boolean;
+  role: string;
+}) => {
   const router = useRouter();
-
-
 
   const navigationItems = [
     {
@@ -26,8 +31,15 @@ role
       path: `/dashboard/activity/profile/${profileId}`,
     },
 
-    ...(isAgent
+    ...(isSeller
       ? [
+          {
+            label: "Store Orders",
+            icon: (
+              <Boxes className="flex-shrink-0 w-5 h-5 text-zinc-500 dark:text-zinc-400" />
+            ),
+            path: "/dashboard/activity/store-orders",
+          },
           {
             label: "Manage Products",
             icon: (
@@ -35,30 +47,35 @@ role
             ),
             path: "/dashboard/activity/products",
           },
+
+          {
+            label: "Store Settings",
+            icon: (
+              <Store className="flex-shrink-0 w-5 h-5 text-zinc-500 dark:text-zinc-400" />
+            ),
+            path: "/dashboard/activity/store-settings",
+          },
         ]
       : []),
+
     {
-      label: "Store Settings",
+      label: "My Orders",
       icon: (
-        <Store className="flex-shrink-0 w-5 h-5 text-zinc-500 dark:text-zinc-400" />
+        <ShoppingCart className="flex-shrink-0 w-5 h-5 text-zinc-500 dark:text-zinc-400" />
       ),
-      path: "/dashboard/activity/store-settings",
+      path: "/dashboard/activity/user-orders",
     },
-    {
-      label: "Account Plan",
-      icon: (
-        <CreditCard className="flex-shrink-0 w-5 h-5 text-zinc-500 dark:text-zinc-400" />
-      ),
-      path: "/dashboard/activity/subscription",
-    },
-      ...(role === 'SUPERADMIN'
-    ?[{
-      label: "SUPER ADMIN",
-      icon: (
-        <ShieldCheck className="flex-shrink-0 w-5 h-5 text-zinc-500 dark:text-zinc-400" />
-      ),
-      path: "/super-admin",
-    } ]:[]),
+    ...(role === "SUPERADMIN"
+      ? [
+          {
+            label: "SUPER ADMIN",
+            icon: (
+              <ShieldCheck className="flex-shrink-0 w-5 h-5 text-zinc-500 dark:text-zinc-400" />
+            ),
+            path: "/super-admin",
+          },
+        ]
+      : []),
   ];
 
   const handleNavigation = (path: string) => {
@@ -84,10 +101,7 @@ role
             </div>
           </div>
         ))}
-       
-        
       </div>
-    
     </div>
   );
 };

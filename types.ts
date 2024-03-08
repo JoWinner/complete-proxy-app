@@ -44,7 +44,6 @@ export interface Product {
   price: number;
   description: string;
   category: Category;
-  currency: Currency;
   weight: string | null;
   moq: number;
   isArchived: boolean;
@@ -63,14 +62,41 @@ export interface Category {
   name: string;
 }
 
-export interface Currency {
-  id: string;
-  name: string;
-  symbol: string;
-}
 export interface Country{
   id: string;
   name: string;
   profiles: Profile[];
-  stores: Store[];
- }
+}
+ 
+export type CreateOrder = {
+  id: string;
+  name: string;
+  sellerId: string;
+  groupId: string;
+  price: string;
+  moq: string;
+  weight: string;
+  images: Image[];
+}
+
+export type OrderInfo = {
+  id: string;
+  productName: string;
+  price: string;
+  images: Image[];
+  quantity: string;
+  totalWeight: string;
+  totalAmount: string;
+  createdAt: string;
+  status: string;
+  sellerId: string;
+  // buyerId: string;
+  buyerName: string;
+  buyerEmail: string;
+  buyerCountry: string;
+  buyerProvince: string;
+  buyerCity: string;
+  buyerPhoneNumber: string;
+  buyerZipCode: string;
+  buyerStreetAddress: string;
+}
