@@ -93,7 +93,7 @@ export const SearchInput = () => {
           onChange={onChange}
           onKeyPress={handleKeyPress}
           value={value}
-          placeholder="@digiShop or shoes"
+          placeholder="@digiShop/shoes/machines/dress/hair"
           className=" h-full border-0 focus-visible:ring-2  outline-none dark:bg-gray-900 placeholder:text-[#C4C4C4] placeholder:text-[14px] "
         />
         <div>

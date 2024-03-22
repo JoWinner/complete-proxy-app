@@ -86,7 +86,7 @@ export const CreateOrderModal = () => {
 
   const watchedQuantity = form.watch("quantity");
   const watchedTotalWeight = form.watch("totalWeight");
-  const watchedtotalAmount = form.watch("totalAmount");
+  const watchedTotalAmount = form.watch("totalAmount");
 
   useEffect(() => {
     if (selectedProduct) {
@@ -261,7 +261,7 @@ export const CreateOrderModal = () => {
                 <h5>
                   Total Amount:
                   <span className="font-bold ml-4">
-                    {formatter.format(watchedtotalAmount)}
+                    {formatter.format(watchedTotalAmount)}
                   </span>
                 </h5>
               </div>

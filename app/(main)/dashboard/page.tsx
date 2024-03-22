@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 
 const DashboardPage = () => {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-[#f4f4f4] dark:bg-[#13111c] min-h-screen">
       <DashboardMobileToggle />
       <div className="w-full ">
         <div className="aspect-square relative w-full h-[700px] md:h-screen ">
@@ -120,7 +120,7 @@ const DashboardPage = () => {
             </div>
           </div>
         </div>
-        <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
+        <div className="bg-[#f4f4f4] grid lg:gap-8 lg:grid-cols-2 lg:items-center">
           <div className="p-8 flex flex-col items-center">
             <h3 className="text-2xl font-bold font-unbounded-style  sm:text-3xl  text-slate-900">
               How All The Traders Do It
@@ -129,7 +129,7 @@ const DashboardPage = () => {
             <div className="mt-12 space-y-12">
               <div className="flex">
                 <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center w-12 h-12   bg-[#fc5e28] rounded-full  text-gray-900">
+                  <div className="flex items-center justify-center w-12 h-12   bg-[#28e3fc] rounded-full  text-gray-900">
                     <SearchCheck />
                   </div>
                 </div>
@@ -145,7 +145,7 @@ const DashboardPage = () => {
               </div>
               <div className="flex">
                 <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center w-12 h-12   bg-[#fc5e28] rounded-full  text-gray-900">
+                  <div className="flex items-center justify-center w-12 h-12   bg-[#38e641] rounded-full  text-gray-900">
                     <Users />
                   </div>
                 </div>
@@ -162,7 +162,7 @@ const DashboardPage = () => {
               </div>
               <div className="flex">
                 <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center w-12 h-12   bg-[#fc5e28] rounded-full  text-gray-900">
+                  <div className="flex items-center justify-center w-12 h-12   bg-[#fffc34] rounded-full  text-gray-900">
                     <ShoppingCart />
                   </div>
                 </div>
@@ -179,7 +179,7 @@ const DashboardPage = () => {
               </div>
               <div className="flex">
                 <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center w-12 h-12   bg-[#fc5e28] rounded-full  text-gray-900">
+                  <div className="flex items-center justify-center w-12 h-12   bg-[#e328fc] rounded-full  text-gray-900">
                     <BadgeDollarSign />
                   </div>
                 </div>
@@ -197,7 +197,7 @@ const DashboardPage = () => {
               </div>
               <div className="flex">
                 <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center w-12 h-12   bg-[#fc5e28] rounded-full  text-gray-900">
+                  <div className="flex items-center justify-center w-12 h-12   bg-[#f3093c] rounded-full  text-gray-300">
                     <BadgeCheck />
                   </div>
                 </div>
@@ -225,7 +225,7 @@ const DashboardPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-center py-8">
+        <div className="bg-[#f4f4f4] flex items-center justify-center py-8">
           <Link href="/">
             <Button
               variant="premium"
