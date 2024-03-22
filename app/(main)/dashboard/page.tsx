@@ -26,7 +26,7 @@ const DashboardPage = () => {
             className="aspect-square object-cover "
           />
         </div>
-        <div className="absolute top-40 md:top-28  lg:top-0 left-0 w-full h-full flex flex-col justify-center items-center text-white ">
+        <div className="absolute top-44 md:top-28  lg:top-0 left-0 w-full h-full flex flex-col justify-center items-center text-white ">
           <div className="md:left-[10%]  absolute md:p-10 lg:p-20">
             <div className="flex flex-row items-center my-2 lg:my-3">
               <hr className="w-5 lg:w-[70px] h-[2px] lg:h-[3px] bg-white border-0 " />
