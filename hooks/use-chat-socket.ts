@@ -24,6 +24,7 @@ export const useChatSocket = ({
   const { socket } = useSocket();
   const queryClient = useQueryClient();
   const [newMessage, setNewMessage] = useState(false); // Add this line
+  const resetNewMessage = () => setNewMessage(false);
 
   useEffect(() => {
     if (!socket) {
@@ -87,8 +88,8 @@ export const useChatSocket = ({
     return () => {
       socket.off(addKey);
       socket.off(updateKey);
-      setNewMessage(false);
+      // setNewMessage(false);
     }
   }, [queryClient, addKey, queryKey, socket, updateKey]);
-  return { newMessage };
+  return { newMessage, resetNewMessage };
 }

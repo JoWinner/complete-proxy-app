@@ -16,7 +16,7 @@ interface NavigationItemProps {
 export const NavigationItem = ({ id, imageUrl, name }: NavigationItemProps) => {
   const params = useParams();
   const router = useRouter();
-  const { newMessage } = useChatSocket({
+  const { newMessage, resetNewMessage } = useChatSocket({
     addKey: `chat:${id}:messages`,
     updateKey: `chat:${id}:messages:update`,
     queryKey: `chat:${id}`,
@@ -24,13 +24,14 @@ export const NavigationItem = ({ id, imageUrl, name }: NavigationItemProps) => {
 
   const onClick = () => {
     router.push(`/dashboard/groups/${id}`);
+    resetNewMessage(); 
   };
 
   return (
     <ActionTooltip side="right" align="center" label={name}>
       <button onClick={onClick} className="group relative flex items-center">
         {newMessage && 
-          <div className="absolute top-0 right-2 h-2 w-2 rounded-full bg-yellow-500 cursor-none" />
+          <div className="absolute top-0 right-2 h-2 w-2 rounded-full bg-red-600 cursor-none" />
         }
 
         <div

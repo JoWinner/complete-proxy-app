@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useRef, ElementRef } from "react";
+import { Fragment, useRef, ElementRef,useEffect } from "react";
 import { format } from "date-fns";
 import { Member, Message, Profile, ChannelType, Channel } from "@prisma/client";
 import { ProductInfoProps } from "../ui/product-info";
@@ -72,6 +72,16 @@ export const ChatMessages = ({
     count: data?.pages?.[0]?.items?.length ?? 0,
   });
 
+  const { resetNewMessage } = useChatSocket({
+    addKey: `chat:${chatId}:messages`,
+    updateKey: `chat:${chatId}:messages:update`,
+    queryKey: `chat:${chatId}`,
+  });
+
+  useEffect(() => {
+    resetNewMessage();
+  }, [resetNewMessage]);
+  
   if (status === "loading") {
     return (
       <div className="flex flex-col flex-1 justify-center items-center">

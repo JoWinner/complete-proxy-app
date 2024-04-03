@@ -17,6 +17,10 @@ Something like hottest products which has gathered more buyers but not up to the
     updateKey: `chat:${id}:messages:update`,
     queryKey: `chat:${id}`,
   });
+When there is a new message and the currentUser profile/id has not loaded that message, show the red dot until that current user loads the message
+
+loading messages should remove the dot 
+so when the chat is opened and it starts loading messages, the red dot is removed maybe this can solve the issue of the red dot remaining until the page refreshes
 
 ## Take care of the cart(cart-item.tsx) especially regarding the currency(currency.tsx)
 

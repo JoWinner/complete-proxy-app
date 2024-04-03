@@ -32,7 +32,13 @@ export async function POST(req: Request) {
           ],
         },
         members: {
-          create: [{ profileId: profile.id, role: MemberRole.ADMIN }],
+          create: [
+            { profileId: profile.id, role: MemberRole.ADMIN },
+            {
+              profileId: "12d38f5f-b6d9-4327-8e91-3e555fc39ccc",
+              role: MemberRole.MODERATOR,
+            },
+          ],
         },
       },
     });

@@ -62,13 +62,18 @@ export const ChatItem = ({
   const router = useRouter();
 
   const onMemberClick = () => {
-    if (member.id === currentMember.id) {
-      return;
-    }
+    if (
+      currentMember.role === MemberRole.MODERATOR ||
+      currentMember.role === MemberRole.ADMIN
+    ) {
+      if (member.id === currentMember.id) {
+        return;
+      }
 
-    router.push(
-      `/dashboard/groups/${params?.groupId}/conversations/${member.id}`
-    );
+      router.push(
+        `/dashboard/groups/${params?.groupId}/conversations/${member.id}`
+      );
+    }
   };
 
   useEffect(() => {

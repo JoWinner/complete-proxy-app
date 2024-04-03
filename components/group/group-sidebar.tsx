@@ -50,6 +50,21 @@ export const GroupSidebar = async ({ groupId }: GroupSidebarProps) => {
     return redirect("/");
   }
 
+  const groupWithCurrentUserRole = await db.group.findUnique({
+    where: {
+      id: groupId,
+    },
+    include: {
+      members: {
+        where: {
+          profileId: profile.id,
+        },
+      },
+    },
+  });
+
+  const currentUserRole = groupWithCurrentUserRole?.members[0]?.role;
+
   const group = await db.group.findUnique({
     where: {
       id: groupId,
@@ -67,7 +82,20 @@ export const GroupSidebar = async ({ groupId }: GroupSidebarProps) => {
         orderBy: {
           role: "asc",
         },
+        where: {
+          // Exclude GUEST members if the current user's role is GUEST
+          NOT:
+            currentUserRole === MemberRole.GUEST
+              ? { role: MemberRole.GUEST }
+              : {},
+        },
       },
+    },
+  });
+
+  const totalMemberCount = await db.member.count({
+    where: {
+      groupId: groupId,
     },
   });
 
@@ -86,14 +114,14 @@ export const GroupSidebar = async ({ groupId }: GroupSidebarProps) => {
     id: item.id,
     name: item.name,
     sellerId: item.profileId,
-    groupId: item.groupId || '', // Ensuring groupId is never null
+    groupId: item.groupId || "",
     price: item.price.toString(),
     moq: item.moq.toString(),
     weight: item.weight || "N/A",
     images: item.images,
   }));
 
-  console.log("Formatted", formattedProducts);
+  // console.log("Formatted", formattedProducts);
 
   const store = await db.group.findUnique({
     where: {
@@ -294,7 +322,7 @@ export const GroupSidebar = async ({ groupId }: GroupSidebarProps) => {
             <GroupSection
               sectionType="members"
               role={role}
-              label={`Members (${members.length}/${group.maxMembers})`}
+              label={`Members (${totalMemberCount}/${group.maxMembers})`}
               group={group}
             />
             <div className="space-y-[2px]">

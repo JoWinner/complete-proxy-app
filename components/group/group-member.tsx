@@ -24,7 +24,7 @@ const roleIconMap = {
 export const GroupMember = ({ member, group }: GroupMemberProps) => {
   const params = useParams();
   const router = useRouter();
-  const { newMessage } = useChatSocket({
+  const { newMessage, resetNewMessage } = useChatSocket({
     addKey: `chat:${member.id}:messages`,
     updateKey: `chat:${member.id}:messages:update`,
     queryKey: `chat:${member.id}`,
@@ -35,7 +35,8 @@ export const GroupMember = ({ member, group }: GroupMemberProps) => {
   const onClick = () => {
     router.push(
       `/dashboard/groups/${params?.groupId}/conversations/${member.id}`
-    );
+      );
+      resetNewMessage();
   };
 
   return (
@@ -46,10 +47,11 @@ export const GroupMember = ({ member, group }: GroupMemberProps) => {
         params?.memberId === member.id && "bg-zinc-700/20 dark:bg-zinc-700"
       )}
     >
-    
      
-        {newMessage && <div className="absolute right-8 h-2 w-2 rounded-full bg-blue-500 cursor-none" />}
-      
+       {newMessage && ( 
+       <div className="absolute right-8 h-2 w-2 rounded-full bg-red-600 cursor-none" /> 
+       )} 
+
       <UserAvatar
         src={member.profile.imageUrl}
         className="h-8 w-8 md:h-8 md:w-8"
