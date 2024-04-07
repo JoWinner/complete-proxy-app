@@ -74,8 +74,8 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   const [loading, setLoading] = useState(false);
 
   const title = initialData ? "Edit product" : "Create product";
-  const description = initialData ? "Edit a product." : "Add a new product";
-  const toastMessage = initialData ? "Product updated." : "Product created.";
+  const description = initialData ? "Edit a product" : "Add a new product";
+  const toastMessage = initialData ? "Product updated" : "Product created";
   const action = initialData ? "Save changes" : "Create";
 
   const defaultValues = initialData
@@ -117,7 +117,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       router.push(`/dashboard/activity/products`);
       toast.success(toastMessage);
     } catch (error: any) {
-      toast.error("Something went wrong.");
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -134,7 +134,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       router.push(`/dashboard/activity/products`);
       toast.success("Product deleted.");
     } catch (error: any) {
-      toast.error("Something went wrong.");
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
       setOpen(false);

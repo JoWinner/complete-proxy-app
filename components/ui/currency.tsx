@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-const formatter = new Intl.NumberFormat("en-US", {
+const formatter = new Intl.NumberFormat("zh-CN", {
   style: "currency",
-  currency: "USD",
+  currency: "CNY",
 });
 
 interface CurrencyProps {
@@ -22,7 +22,11 @@ const Currency: React.FC<CurrencyProps> = ({ value = 0 }) => {
     return null;
   }
 
-  return <div className=" text-slate-900 dark:text-slate-300">{formatter.format(Number(value))}</div>;
+  return (
+    <div className=" text-slate-900 dark:text-slate-300">
+      {formatter.format(Number(value))}
+    </div>
+  );
 };
 
 export default Currency;

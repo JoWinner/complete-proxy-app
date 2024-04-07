@@ -10,18 +10,17 @@ import { toast } from "react-hot-toast";
 import { useDebounce } from "@/hooks/use-debounce";
 
 import { Input } from "@/components/ui/input";
-import {Button} from "./ui/activity-button";
+import { Button } from "./ui/activity-button";
 
 export const SearchInput = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const productId =searchParams ? searchParams.get("productId") : null;
-  const name =searchParams ? searchParams.get("name") : null;
+  const productId = searchParams ? searchParams.get("productId") : null;
+  const name = searchParams ? searchParams.get("name") : null;
 
   const [value, setValue] = useState(name || "");
   const debouncedValue = useDebounce<string>(value, 500);
-
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setValue(e.target.value);
@@ -31,11 +30,11 @@ export const SearchInput = () => {
     if (!debouncedValue || debouncedValue.length < 3) {
       return;
     }
-      const query = {
-        name: debouncedValue,
-        productId: productId,
-      };
-    
+    const query = {
+      name: debouncedValue,
+      productId: productId,
+    };
+
     const url = qs.stringifyUrl(
       {
         url: `/search`,
@@ -43,9 +42,9 @@ export const SearchInput = () => {
       },
       { skipNull: true, skipEmptyString: true }
     );
-  
+
     router.push(url);
-    setValue('');
+    setValue("");
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -54,7 +53,7 @@ export const SearchInput = () => {
       performSearch();
     }
   };
-    
+
   const locateStore = async () => {
     if (!debouncedValue || debouncedValue.length < 3) {
       return;
@@ -63,19 +62,18 @@ export const SearchInput = () => {
       ? debouncedValue.slice(1)
       : debouncedValue;
 
-    const response = await fetch(`/api/@${storeUsername}/storefront`);
+    const response = await fetch(`/api/${storeUsername}/storefront`);
     if (response.ok) {
       const store = await response.json();
       if (store) {
-        router.push(`/@${storeUsername}`);
-      } 
+        router.push(`/${storeUsername}`);
+      }
     } else {
       toast.error(`@${storeUsername} storefront does not exist!`);
     }
 
     setValue("");
   };
-
 
   return (
     <div className="w-3/4 md:w-1/2 bg-gray-200 dark:bg-gray-800 rounded-md  flex justify-center items-center">
@@ -94,7 +92,7 @@ export const SearchInput = () => {
           onKeyPress={handleKeyPress}
           value={value}
           placeholder="@digiShop/shoes/machines/dress/hair"
-          className=" h-full border-0 focus-visible:ring-2  outline-none dark:bg-gray-900 placeholder:text-[#C4C4C4] placeholder:text-[14px] "
+          className=" h-full border-0 focus-visible:ring-2 dark:text-white text-black outline-none dark:bg-gray-900 placeholder:text-[#C4C4C4] placeholder:text-[14px] "
         />
         <div>
           <Button

@@ -45,7 +45,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
           src={data.images?.[0]?.url}
           alt=""
           fill
-          className="aspect-square object-cover rounded-md"
+          className="aspect-square object-cover rounded-xl border-2 border-gray-100"
         />
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
           <div className="flex gap-x-6 justify-center">

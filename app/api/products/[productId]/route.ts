@@ -136,6 +136,16 @@ export async function PATCH(
       return new NextResponse("Unauthorized", { status: 405 });
     }
 
+    const store = await db.store.findUnique({
+      where: {
+        profileId: profile.id,
+      },
+    });
+    
+    if (!store) {
+      return new NextResponse("Store not found for the user", { status: 404 });
+    }
+
     await db.product.update({
       where: {
         id: params.productId,
@@ -148,6 +158,7 @@ export async function PATCH(
         moq,
         groupId,
         categoryId,
+        storeId: store.id,
         images: {
           deleteMany: {},
         },

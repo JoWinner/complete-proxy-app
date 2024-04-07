@@ -61,6 +61,16 @@ export async function POST(req: Request) {
       return new NextResponse("Unauthorized", { status: 405 });
     }
 
+    const store = await db.store.findUnique({
+      where: {
+        profileId: profile.id,
+      },
+    });
+    
+    if (!store) {
+      return new NextResponse("Store not found for the profile", { status: 404 });
+    }
+
     const product = await db.product.create({
       data: {
         name,
@@ -72,6 +82,7 @@ export async function POST(req: Request) {
         groupId,
         categoryId,
         profileId: profile.id,
+        storeId: store.id,
         images: {
           createMany: {
             data: [...images.map((image: { url: string }) => image)],
@@ -109,6 +120,7 @@ export async function GET(req: Request) {
       where: {
         name: {
           contains: searchQuery,
+          mode: 'insensitive',
         },
         categoryId,
         groupId,
@@ -124,6 +136,7 @@ export async function GET(req: Request) {
             members: true,
           },
         },
+        store: true,
       },
       orderBy: {
         createdAt: "desc",
