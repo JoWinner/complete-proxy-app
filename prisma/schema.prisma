@@ -47,6 +47,9 @@ model Store{
    username String @unique @default("")
    logoUrl String? @db.Text
 
+  fileUrl String? @db.Text
+  storeBio String? @db.Text
+
    profileId String @unique
    profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 

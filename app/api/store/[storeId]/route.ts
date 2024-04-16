@@ -15,6 +15,8 @@ export async function PATCH(
       storeName,
       logoUrl,
       username,
+      fileUrl,
+      storeBio
     } = body;
 
     if (!profile) {
@@ -27,6 +29,14 @@ export async function PATCH(
 
     if (!username) {
       return new NextResponse("Username is required", { status: 400 });
+    }
+
+    if (!fileUrl) {
+      return new NextResponse("An attachment required", { status: 400 });
+    }
+
+    if (!storeBio) {
+      return new NextResponse("Store bio required", { status: 400 });
     }
 
     const existingStore = await db.store.findUnique({
@@ -54,6 +64,8 @@ export async function PATCH(
         storeName,
         logoUrl,
         username,
+        fileUrl,
+        storeBio
       },
     });
 

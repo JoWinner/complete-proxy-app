@@ -25,16 +25,8 @@ export interface Store {
   storeName: string;
   username: string;
   logoUrl: string;
-  storeMail: string;
-  storePhone: string;
-  facebook: string;
-  instagram: string;
-  tiktok: string;
-  telegram: string;
-  xTwitter: string;
-  youtube: string;
-  whatsApp: string;
-  country: Country;
+  fileUrl: string;
+  storeBio: string;
   profile: Profile;
   // createdAt: Date;
   // updatedAt: Date;

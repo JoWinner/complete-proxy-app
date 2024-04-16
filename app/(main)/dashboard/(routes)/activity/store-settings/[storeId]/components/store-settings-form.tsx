@@ -7,7 +7,7 @@ import { Trash, ArrowUpRightFromCircle } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import {  Store } from "@prisma/client";
+import { Store } from "@prisma/client";
 
 import { useParams, useRouter } from "next/navigation";
 import { FileUpload } from "@/components/file-upload";
@@ -23,10 +23,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { AlertModal } from "@/components/modals/alert-modal";
 import { Heading } from "@/components/ui/heading";
-
 
 const formSchema = z.object({
   storeName: z.string().min(1),
@@ -34,6 +34,10 @@ const formSchema = z.object({
     message: "Logo/image required",
   }),
   username: z.string().min(4),
+  fileUrl: z.string().min(1, {
+    message: "Attachment is required.",
+  }),
+  storeBio: z.string().min(10),
 });
 
 type StoreFormValues = z.infer<typeof formSchema>;
@@ -41,11 +45,15 @@ type StoreFormValues = z.infer<typeof formSchema>;
 interface StoreFormProps {
   initialData: Store;
   username: string;
+  storeBio: string | null;
+  fileUrl: string | null;
 }
 
 export const StoreSettingsForm: React.FC<StoreFormProps> = ({
   initialData,
   username,
+  storeBio,
+  fileUrl,
 }) => {
   const params = useParams();
   const router = useRouter();
@@ -61,6 +69,8 @@ export const StoreSettingsForm: React.FC<StoreFormProps> = ({
     defaultValues: {
       ...initialData,
       logoUrl: initialData?.logoUrl || "",
+      fileUrl: initialData?.fileUrl || "",
+      storeBio: initialData?.storeBio || "",
     },
   });
 
@@ -132,14 +142,15 @@ export const StoreSettingsForm: React.FC<StoreFormProps> = ({
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-8 w-full"
         >
-          <div className="flex flex-row justify-between">
-            <div className="flex flex-col ">
-              <div className="flex flex-col">
+          <div className="flex w-full flex-row justify-between">
+            <div className="flex flex-col w-full py-4">
+              <div className="flex flex-col mb-2">
                 <h1 className="mt-8 font-medium text-lg text-black dark:text-white">
                   Storefront logo
                 </h1>
-                <h3 className="font-normal text-sm text-zinc-500 dark:text-zinc-400">
-                  Add a logo or image of your business
+                <h3 className="font-normal text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2">
+                  Add a logo or image of your business,
+                  <br/>let buyers know about your brand
                 </h3>
               </div>
               <div className="flex items-center">
@@ -151,6 +162,36 @@ export const StoreSettingsForm: React.FC<StoreFormProps> = ({
                       <FormControl>
                         <FileUpload
                           endpoint="groupImage"
+                          value={field.value}
+                          onChange={field.onChange}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
+            <div className="flex flex-col  w-full py-4">
+              <div className="flex flex-col mb-2">
+                <h1 className="mt-8 font-medium text-lg text-black dark:text-white">
+                  Storefront Banner
+                </h1>
+                <h3 className="font-normal text-sm text-zinc-500 dark:text-zinc-400">
+                  Add a short video or image as a banner
+                  <br/>
+                  for your business (introduction/advertisement video)
+                  
+                </h3>
+              </div>
+              <div className="flex items-center ">
+                <FormField
+                  control={form.control}
+                  name="fileUrl"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <FileUpload
+                          endpoint="messageFile"
                           value={field.value}
                           onChange={field.onChange}
                         />
@@ -212,6 +253,26 @@ export const StoreSettingsForm: React.FC<StoreFormProps> = ({
             />
           </div>
 
+          <div>
+            <FormField
+              control={form.control}
+              name="storeBio"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Store bio</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      disabled={loading}
+                      placeholder="Give details about what you offer"
+                      {...field}
+                      className=" dark:bg-zinc-700/75 dark:text-zinc-100"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
           <Button disabled={loading} className="ml-auto" type="submit">
             {action}
           </Button>

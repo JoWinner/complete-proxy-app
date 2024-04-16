@@ -17,23 +17,9 @@ export const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
   const fileType = value?.split(".").pop();
   const isVideo = ["mp4", "mov", "wmv"].includes(fileType || "");
 
-  if (value && fileType !== "pdf") {
-    return (
-      <div className="relative h-28 w-28">
-        <Image fill src={value} alt="Upload" className="rounded-md" />
-        <button
-          onClick={() => onChange("")}
-          className="bg-rose-500 text-white p-1 rounded-full absolute top-0 right-0 shadow-sm"
-          type="button"
-        >
-          <X className="h-4 w-4" />
-        </button>
-      </div>
-    );
-  }
   if (value && isVideo) {
     return (
-      <div className="relative h-28 w-28">
+      <div className="relative h-36 w-56">
         <video src={value} controls className="rounded-md h-full w-full">
           Your browser does not support the video.
         </video>
@@ -47,7 +33,20 @@ export const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
       </div>
     );
   }
-
+  if (value && fileType !== "pdf") {
+    return (
+      <div className="relative h-36 w-48">
+        <Image fill src={value} alt="Image upload" className="rounded-md" />
+        <button
+          onClick={() => onChange("")}
+          className="bg-rose-500 text-white p-1 rounded-full absolute top-0 right-0 shadow-sm"
+          type="button"
+        >
+          <X className="h-4 w-4" />
+        </button>
+      </div>
+    );
+  }
   if (value && fileType === "pdf") {
     return (
       <div className="relative flex items-center p-2 mt-2 rounded-md bg-background/10">
