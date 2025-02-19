@@ -228,7 +228,7 @@ const DashboardPage = () => {
         <div className="bg-[#f4f4f4] flex items-center justify-center py-8">
           <Link href="/">
             <Button
-              variant="premium"
+              variant="secondary"
               className="flex flex-row items-center justify-center font-unbounded-style rounded-full font-medium text-lg drop-shadow-xl "
               size="lg"
             >
