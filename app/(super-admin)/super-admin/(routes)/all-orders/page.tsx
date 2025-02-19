@@ -9,6 +9,7 @@ import { AllOrdersColumn } from "./components/columns";
 
 const AllOrdersPage = async () => {
   const profile = await currentProfile();
+  const { redirectToSignIn } = await auth()
 
   if (!profile) {
     return redirectToSignIn();
