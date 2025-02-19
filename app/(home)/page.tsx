@@ -8,7 +8,7 @@ import { Product } from "@/types";
 import { useInView } from "react-intersection-observer";
 import { Spinner } from "@/components/ui/spinner";
 
-export const revalidate = 0;
+// export const revalidate = 0;
 
 export default function HomePage() {
   const origin = useOrigin();

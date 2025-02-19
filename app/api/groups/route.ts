@@ -35,7 +35,7 @@ export async function POST(req: Request) {
           create: [
             { profileId: profile.id, role: MemberRole.ADMIN },
             {
-              profileId: "12d38f5f-b6d9-4327-8e91-3e555fc39ccc",
+              profileId: "d69b6ad1-84d5-442e-b379-9b12e4b3012b",
               role: MemberRole.MODERATOR,
             },
           ],

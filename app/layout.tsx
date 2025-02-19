@@ -45,7 +45,7 @@ export default function RootLayout({
         <body className={cn(`${urbanist.variable} ${unbounded.variable} ${openSans.variable}, "bg-[#f4f4f4] dark:bg-[#13111c]"`)}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="light"
             // enableSystem={false}
             enableSystem
             storageKey="discord-theme"

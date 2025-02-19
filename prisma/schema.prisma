@@ -2,13 +2,17 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// datasource db {
+//   // provider = "mysql"
+//   provider = "postgresql"
+//   url = env("DATABASE_URL")
+//   relationMode = "prisma"
+// }
 datasource db {
-  // provider = "mysql"
   provider = "postgresql"
-  url = env("DATABASE_URL")
-  relationMode = "prisma"
+   url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
-
 model Profile {
   id String @id @default(uuid())
   userId String @unique
@@ -33,6 +37,7 @@ model Profile {
   channels Channel[]
   products Product[] 
   orders Order[]
+  messageRead MessageRead[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -211,24 +216,33 @@ model Channel {
 }
 
 model Message {
-  id String @id @default(uuid())
-  content String @db.Text
-
-  fileUrl String? @db.Text
-
-  memberId String
-  member Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
-
-  channelId String
-  channel Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
-
-  deleted Boolean @default(false)
-
+  id        String   @id @default(uuid())
+  content   String   @db.Text
+  fileUrl   String?  @db.Text
+  memberId  String
+  channelId String?
+  deleted   Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  member    Member   @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  channel   Channel? @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  reads     MessageRead[]
 
   @@index([channelId])
   @@index([memberId])
+}
+
+model MessageRead {
+  id        String   @id @default(uuid())
+  messageId String
+  profileId String
+  readAt    DateTime @default(now())
+  message   Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@unique([messageId, profileId])
+  @@index([messageId])
+  @@index([profileId])
 }
 
 model Conversation {

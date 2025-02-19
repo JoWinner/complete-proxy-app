@@ -1,4 +1,4 @@
-import { redirectToSignIn } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 
 import { StoreFrontFooter } from "@/components/storefront-ui/storefront-footer";
 import { StoreFrontNavbar } from "@/components/storefront-ui/storefront-navbar";
@@ -11,6 +11,7 @@ const StoreFrontLayout = async ({
   children: React.ReactNode;
 }) => {
   const profile = await initialProfile();
+  const { redirectToSignIn } = await auth()
 
   if (!profile) {
     return redirectToSignIn();

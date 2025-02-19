@@ -43,7 +43,7 @@ export const Navbar = () => {
           <UserButton afterSignOutUrl="/" />
         </>
 
-        <ModeToggle />
+        {/* <ModeToggle /> */}
       </div>
 
       <Sheet>
@@ -67,9 +67,9 @@ export const Navbar = () => {
               </Link>
             </div>
             
-            <div className="w-full flex items-center justify-center">
+            {/* <div className="w-full flex items-center justify-center">
               <ModeToggle />
-            </div>
+            </div> */}
           </div>
         </SheetContent>
       </Sheet>

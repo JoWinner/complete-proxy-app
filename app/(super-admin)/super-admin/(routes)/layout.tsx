@@ -1,4 +1,4 @@
-import { redirectToSignIn } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 
 import { currentProfile } from "@/lib/current-profile";
 import { SuperAdminMobileToggle } from "@/components/super-admin-mobile-toggle";

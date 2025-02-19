@@ -1,4 +1,4 @@
-import { redirectToSignIn } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { ChannelType, MemberRole } from "@prisma/client";
 
@@ -22,6 +22,7 @@ interface ChannelIdPageProps {
 
 const ChannelIdPage = async ({ params }: ChannelIdPageProps) => {
   const profile = await currentProfile();
+  const { redirectToSignIn } = await auth()
 
   if (!profile) {
     return redirectToSignIn();

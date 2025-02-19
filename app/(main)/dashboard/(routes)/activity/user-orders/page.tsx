@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { redirectToSignIn } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 import { formatter } from "@/lib/utils";
@@ -10,6 +10,7 @@ import { TrackOrderChart } from "./components/track-order-chart";
 
 const UserOrdersPage = async () => {
   const profile = await currentProfile();
+  const { redirectToSignIn } = await auth()
 
   if (!profile) {
     return redirectToSignIn();

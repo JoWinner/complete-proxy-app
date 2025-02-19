@@ -1,4 +1,4 @@
-import { redirectToSignIn } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import { DashboardMobileToggle } from "@/components/dashboard-mobile-toggle";
 
 import { currentProfile } from "@/lib/current-profile";
@@ -6,6 +6,7 @@ import { ActivitySidebar } from "@/components/activity/activity-sidebar";
 
 const ActivityLayout = async ({ children }: { children: React.ReactNode }) => {
   const profile = await currentProfile();
+  const { redirectToSignIn } = await auth()
 
   if (!profile) {
     return redirectToSignIn();

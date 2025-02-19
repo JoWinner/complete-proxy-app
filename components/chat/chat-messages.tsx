@@ -1,9 +1,10 @@
 "use client";
 
-import { Fragment, useRef, ElementRef,useEffect } from "react";
+import { Fragment, useRef, ElementRef, useEffect } from "react";
 import { format } from "date-fns";
 import { Member, Message, Profile, ChannelType, Channel } from "@prisma/client";
 import { ProductInfoProps } from "../ui/product-info";
+import { useNewNotificationStore } from "@/hooks/use-notification-store";
 
 import { Loader2, ServerCrash } from "lucide-react";
 import ProductInfoList from "../product-info-list";
@@ -52,6 +53,7 @@ export const ChatMessages = ({
   const queryKey = `chat:${chatId}`;
   const addKey = `chat:${chatId}:messages`;
   const updateKey = `chat:${chatId}:messages:update`;
+  const chatPlaceId = chatId;
 
   const chatRef = useRef<ElementRef<"div">>(null);
   const bottomRef = useRef<ElementRef<"div">>(null);
@@ -63,7 +65,7 @@ export const ChatMessages = ({
       paramKey,
       paramValue,
     });
-  useChatSocket({ queryKey, addKey, updateKey });
+  useChatSocket({ queryKey, addKey, updateKey, chatPlaceId });
   useChatScroll({
     chatRef,
     bottomRef,
@@ -71,16 +73,6 @@ export const ChatMessages = ({
     shouldLoadMore: !isFetchingNextPage && !!hasNextPage,
     count: data?.pages?.[0]?.items?.length ?? 0,
   });
-
-  const { resetNewMessage } = useChatSocket({
-    addKey: `chat:${chatId}:messages`,
-    updateKey: `chat:${chatId}:messages:update`,
-    queryKey: `chat:${chatId}`,
-  });
-
-  useEffect(() => {
-    resetNewMessage();
-  }, [resetNewMessage]);
   
   if (status === "loading") {
     return (

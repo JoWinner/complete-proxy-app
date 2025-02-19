@@ -32,11 +32,6 @@ const Categories = () => {
       : [];
   }, [categoryList, expanded]); // Add useMemo
 
-
-  // const categories = categoryList
-  //   ? categoryList.slice(0, expanded ? categoryList.length : 5)
-  //   : [];
-
   // Toggle the expand/collapse state
   const handleExpand = () => {
     setExpanded((prevState) => !prevState);
