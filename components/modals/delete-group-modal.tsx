@@ -38,7 +38,7 @@ export const DeleteGroupModal = () => {
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
@@ -49,29 +49,27 @@ export const DeleteGroupModal = () => {
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
             Are you sure you want to do this? <br />
-            <span className="text-indigo-500 font-semibold">{group?.name}</span> will be permanently deleted <br />
-            <span>Product(s) related to this group would be ARCHIVED <br />(ARCHIVED products don&apos;t appear on the market)</span>
+            <span className="text-indigo-500 font-semibold">
+              {group?.name}
+            </span>{" "}
+            will be permanently deleted <br />
+            <span>
+              Product(s) related to this group would be ARCHIVED <br />
+              (ARCHIVED products don&apos;t appear on the market)
+            </span>
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="bg-gray-100 px-6 py-4">
           <div className="flex items-center justify-between w-full">
-            <Button
-              disabled={isLoading}
-              onClick={onClose}
-              variant="ghost"
-            >
+            <Button disabled={isLoading} onClick={onClose} variant="ghost">
               Cancel
             </Button>
-            <Button
-              disabled={isLoading}
-              variant="primary"
-              onClick={onClick}
-            >
+            <Button disabled={isLoading} variant="default" onClick={onClick}>
               Confirm
             </Button>
           </div>
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  )
-}
+  );
+};

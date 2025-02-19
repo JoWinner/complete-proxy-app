@@ -53,7 +53,7 @@ export const OrderDetailsModal = () => {
   Street Address: ${orderDetails.buyerStreetAddress}
   ZIP/Postal Code: ${orderDetails.buyerZipCode}
     `.trim();
-  
+
     navigator.clipboard.writeText(detailsString);
     toast.success("Order details copied to clipboard");
   };
@@ -172,7 +172,7 @@ export const OrderDetailsModal = () => {
                   {orderDetails?.buyerPhoneNumber}
                 </span>
               </h3>
-              
+
               <h3 className="text-sm font-normal ">
                 Country:
                 <span className="ml-4 font-semibold">
@@ -209,7 +209,7 @@ export const OrderDetailsModal = () => {
 
         <DialogFooter className="bg-gray-100 px-6 py-4">
           <Button
-            variant="primary"
+            variant="default"
             onClick={() => orderDetails && onCopy(orderDetails)}
           >
             Copy details
@@ -219,4 +219,3 @@ export const OrderDetailsModal = () => {
     </Dialog>
   );
 };
-

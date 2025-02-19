@@ -266,7 +266,7 @@ export const CreateOrderModal = () => {
                 </h5>
               </div>
 
-              <Button variant="primary" disabled={isLoading}>
+              <Button variant="default" disabled={isLoading}>
                 Create order
               </Button>
             </DialogFooter>

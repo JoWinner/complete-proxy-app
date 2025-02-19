@@ -30,7 +30,7 @@ const ProductStatus = () => {
 
       <Button
         onClick={onUpdateProductStatus}
-        variant={"primary"}
+        variant="default"
       >
         <Settings2 size={20} className="text-gray-700 dark:text-slate-300" />
       </Button>

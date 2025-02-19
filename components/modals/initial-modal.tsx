@@ -20,7 +20,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -29,10 +29,10 @@ import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   name: z.string().min(1, {
-    message: "Group name is required."
+    message: "Group name is required.",
   }),
   imageUrl: z.string().min(1, {
-    message: "Group image is required."
+    message: "Group image is required.",
   }),
   maxMembers: z.coerce.number().min(3, {
     message: "Group must have at least 3 maximum members.",
@@ -54,7 +54,7 @@ export const InitialModal = () => {
       name: "",
       imageUrl: "",
       maxMembers: 3,
-    }
+    },
   });
 
   const isLoading = form.formState.isSubmitting;
@@ -69,7 +69,7 @@ export const InitialModal = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   if (!isMounted) {
     return null;
@@ -83,7 +83,8 @@ export const InitialModal = () => {
             Customize your group
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Give your group a personality with a name and an image. You can always change it later.
+            Give your group a personality with a name and an image. You can
+            always change it later.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -112,9 +113,7 @@ export const InitialModal = () => {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel
-                      className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70"
-                    >
+                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
                       Group name
                     </FormLabel>
                     <FormControl>
@@ -129,12 +128,14 @@ export const InitialModal = () => {
                   </FormItem>
                 )}
               />
-                <FormField
+              <FormField
                 control={form.control}
                 name="maxMembers"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">Maximum Members</FormLabel>
+                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
+                      Maximum Members
+                    </FormLabel>
                     <FormControl>
                       <Input
                         disabled={isLoading}
@@ -150,7 +151,7 @@ export const InitialModal = () => {
               />
             </div>
             <DialogFooter className="bg-gray-100 px-6 py-4">
-              <Button variant="primary" disabled={isLoading}>
+              <Button variant="default" disabled={isLoading}>
                 Create
               </Button>
             </DialogFooter>
@@ -158,5 +159,5 @@ export const InitialModal = () => {
         </Form>
       </DialogContent>
     </Dialog>
-  )
-}
+  );
+};

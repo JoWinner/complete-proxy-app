@@ -20,7 +20,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -30,14 +30,14 @@ import { useModal } from "@/hooks/use-modal-store";
 
 const formSchema = z.object({
   name: z.string().min(1, {
-    message: "Group name is required."
+    message: "Group name is required.",
   }),
   imageUrl: z.string().min(1, {
-    message: "Group image is required."
+    message: "Group image is required.",
   }),
   maxMembers: z.coerce.number().min(3, {
-    message: "Group must have at least 3 maximum members."
-  })
+    message: "Group must have at least 3 maximum members.",
+  }),
 });
 
 export const EditGroupModal = () => {
@@ -53,7 +53,7 @@ export const EditGroupModal = () => {
       name: "",
       imageUrl: "",
       maxMembers: 3,
-    }
+    },
   });
 
   useEffect(() => {
@@ -76,12 +76,12 @@ export const EditGroupModal = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const handleClose = () => {
     form.reset();
     onClose();
-  }
+  };
 
   return (
     <Dialog open={isModalOpen} onOpenChange={handleClose}>
@@ -91,7 +91,8 @@ export const EditGroupModal = () => {
             Edit group
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Edit your sales group by changing name or image to tell buyers more about what buyers should expect.
+            Edit your sales group by changing name or image to tell buyers more
+            about what buyers should expect.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -120,9 +121,7 @@ export const EditGroupModal = () => {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel
-                      className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70"
-                    >
+                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
                       Group name
                     </FormLabel>
                     <FormControl>
@@ -143,7 +142,9 @@ export const EditGroupModal = () => {
                 name="maxMembers"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">Maximum Members</FormLabel>
+                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
+                      Maximum Members
+                    </FormLabel>
                     <FormControl>
                       <Input
                         disabled={isLoading}
@@ -159,7 +160,7 @@ export const EditGroupModal = () => {
               />
             </div>
             <DialogFooter className="bg-gray-100 px-6 py-4">
-              <Button variant="primary" disabled={isLoading}>
+              <Button variant="default" disabled={isLoading}>
                 Save
               </Button>
             </DialogFooter>
@@ -167,5 +168,5 @@ export const EditGroupModal = () => {
         </Form>
       </DialogContent>
     </Dialog>
-  )
-}
+  );
+};
