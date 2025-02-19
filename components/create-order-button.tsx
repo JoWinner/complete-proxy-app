@@ -15,8 +15,8 @@ export const CreateOrderButton = ({ products }: CreateOrderProps) => {
     <div className="pt-2 px-3 flex items-center justify-center">
       <Button
         size="sm"
-        variant={"premium"}
-        onClick={() => onOpen("createOrder", { products })}
+        variant="secondary"
+      onClick={() => onOpen("createOrder", { products })}
         className="w-full flex justify-between"
       >
         Create Order
