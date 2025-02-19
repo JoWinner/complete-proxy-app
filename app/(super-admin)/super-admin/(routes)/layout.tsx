@@ -11,6 +11,7 @@ const AdminLayout = async ({
   
 }) => {
   const profile = await currentProfile();
+  const { redirectToSignIn } = await auth()
 
   if (!profile || profile.role !== 'SUPERADMIN') {
     // Redirect to a different page or show an error message
