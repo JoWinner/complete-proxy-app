@@ -4,7 +4,7 @@ import { Fragment, useRef, ElementRef, useEffect } from "react";
 import { format } from "date-fns";
 import { Member, Message, Profile, ChannelType, Channel } from "@prisma/client";
 import { ProductInfoProps } from "../ui/product-info";
-import { useNewNotificationStore } from "@/hooks/use-notification-store";
+import { useNotificationStore } from "@/hooks/use-notification-store";
 
 import { Loader2, ServerCrash } from "lucide-react";
 import ProductInfoList from "../product-info-list";
@@ -65,7 +65,7 @@ export const ChatMessages = ({
       paramKey,
       paramValue,
     });
-  useChatSocket({ queryKey, addKey, updateKey, chatPlaceId });
+  useChatSocket({ queryKey, addKey, updateKey, chatPlaceId, type });
   useChatScroll({
     chatRef,
     bottomRef,
