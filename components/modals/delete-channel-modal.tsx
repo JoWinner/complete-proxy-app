@@ -39,7 +39,7 @@ export const DeleteChannelModal = () => {
 
       onClose();
       router.refresh();
-      router.push(`/dashboard/groups/${group?.id}`);
+      router.push(`/home/groups/${group?.id}`);
     } catch (error) {
       console.log(error);
     } finally {

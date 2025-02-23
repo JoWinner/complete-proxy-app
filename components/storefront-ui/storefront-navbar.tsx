@@ -61,7 +61,7 @@ export const StoreFrontNavbar = () => {
 
       <div className="hidden md:justify-end justify-between md:flex items-center gap-x-2">
         <>
-          <Link href={"/dashboard"}>
+          <Link href={"/home"}>
             <Button size="sm">Dashboard</Button>
           </Link>
         </>
@@ -88,7 +88,7 @@ export const StoreFrontNavbar = () => {
               </Button>
             </SignInButton> */}
 
-              <Link href={"/dashboard"}>
+              <Link href={"/home"}>
                 <Button size="lg">Dashboard</Button>
               </Link>
             </div>

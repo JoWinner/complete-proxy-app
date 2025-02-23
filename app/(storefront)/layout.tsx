@@ -10,12 +10,6 @@ const StoreFrontLayout = async ({
 }: {
   children: React.ReactNode;
 }) => {
-  const profile = await initialProfile();
-  const { redirectToSignIn } = await auth()
-
-  if (!profile) {
-    return redirectToSignIn();
-  }
 
   return (
     <div className="h-full ">

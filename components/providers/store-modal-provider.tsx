@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import { ActivityModal } from "@/components/modals/activity-modal";
-import { useEffect,useState } from "react"
+import { DashboardModal } from "@/components/modals/dashboard-modal";
+import { useEffect, useState } from "react";
 
-export const ActivityModalProvider = () =>{
-    const [isMounted, setIsMounted] = useState (false);
+export const DashboardModalProvider = () => {
+  const [isMounted, setIsMounted] = useState(false);
 
-    useEffect(() =>{
-        setIsMounted(true);
-    },[]);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-    if (!isMounted) {
-        return null;
-    }
+  if (!isMounted) {
+    return null;
+  }
 
-    return(
-        <>
-        <ActivityModal/>
-        </>
-    )
-}
+  return (
+    <>
+      <DashboardModal />
+    </>
+  );
+};

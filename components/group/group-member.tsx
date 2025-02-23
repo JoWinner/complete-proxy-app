@@ -49,7 +49,7 @@ export const GroupMember = ({
   const icon = roleIconMap[member.role];
 
   const onClick = () => {
-    const conversationPath = `/dashboard/groups/${params?.groupId}/conversations/${member.id}`;
+    const conversationPath = `/home/groups/${params?.groupId}/conversations/${member.id}`;
     router.push(conversationPath);
 
     if (hasUnread("conversation", member.id)) {

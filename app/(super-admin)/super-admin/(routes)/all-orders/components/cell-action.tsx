@@ -18,7 +18,7 @@ import { useModal } from "@/hooks/use-modal-store";
 import { OrderInfo } from "@/types";
 
 import { AlertModal } from "@/components/modals/alert-modal";
-import { Button } from "@/components/ui/activity-button";
+import { Button } from "@/components/ui/dashboard-button";
 import {
   DropdownMenu,
   DropdownMenuContent,

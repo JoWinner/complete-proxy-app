@@ -40,7 +40,7 @@ export const GroupChannel = ({ channel, group, role }: GroupChannelProps) => {
   const Icon = iconMap[channel.type];
 
   const onClick = () => {
-    router.push(`/dashboard/groups/${params?.groupId}/channels/${channel.id}`);
+    router.push(`/home/groups/${params?.groupId}/channels/${channel.id}`);
     markAsRead("channel", channel.id);
   };
 

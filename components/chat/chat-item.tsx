@@ -70,9 +70,7 @@ export const ChatItem = ({
         return;
       }
 
-      router.push(
-        `/dashboard/groups/${params?.groupId}/conversations/${member.id}`
-      );
+      router.push(`/home/groups/${params?.groupId}/conversations/${member.id}`);
     }
   };
 

@@ -9,7 +9,7 @@ import { Search } from "lucide-react";
 import { useDebounce } from "@/hooks/use-debounce";
 
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/activity-button";
+import { Button } from "@/components/ui/dashboard-button";
 
 export const StoreFrontSearchInput = () => {
   const router = useRouter();

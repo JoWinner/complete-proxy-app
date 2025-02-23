@@ -32,7 +32,7 @@ export const LeaveGroupModal = () => {
 
       onClose();
       router.refresh();
-      router.push("/dashboard");
+      router.push("/home");
     } catch (error) {
       console.log(error);
     } finally {

@@ -28,7 +28,7 @@ export const NavigationItem = ({ id, imageUrl, name }: NavigationItemProps) => {
   });
 
   const onClick = () => {
-    const groupPath = `/dashboard/groups/${id}`;
+    const groupPath = `/home/groups/${id}`;
     router.push(groupPath);
 
     if (hasUnread("group", id)) {

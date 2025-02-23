@@ -1,11 +1,12 @@
 import { redirect } from "next/navigation";
-import { UserButton } from "@clerk/nextjs";
+import { UserButton, SignInButton } from "@clerk/nextjs";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Separator } from "@/components/ui/separator";
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
+import { Button } from "@/components/ui/button";
 
 import { NavigationAction } from "./navigation-action";
 import { NavigationItem } from "./navigation-item";
@@ -13,26 +14,35 @@ import { NavigationItem } from "./navigation-item";
 export const NavigationSidebar = async () => {
   const profile = await currentProfile();
 
-  if (!profile) {
-    return redirect("/");
-  }
-
-  const groups = await db.group.findMany({
-    where: {
-      members: {
-        some: {
-          profileId: profile.id,
+  const groups = profile
+    ? await db.group.findMany({
+        where: {
+          members: {
+            some: {
+              profileId: profile.id,
+            },
+          },
         },
-      },
-    },
-  });
+      })
+    : [];
 
   return (
     <div className="space-y-4 flex flex-col items-center h-full text-primary w-full dark:bg-[#1E1F22] bg-[#E3E5E8] py-3">
-      <NavigationAction
-        profileId={profile?.id}
-        isSeller={profile?.isSeller || false}
-      />
+      {profile ? (
+        <NavigationAction
+          profileId={profile.id}
+          isSeller={profile.isSeller || false}
+        />
+      ) : (
+        <SignInButton mode="modal">
+          <Button variant="default" className="font-unbounded-style text-sm h-[52px] w-[52px] rounded-[24px] flex flex-col items-center">
+              Sign
+              <br/>
+              In
+           
+          </Button>
+        </SignInButton>
+      )}
       <Separator className="h-[2px] bg-zinc-300 dark:bg-zinc-700 rounded-md w-10 mx-auto" />
       <ScrollArea className="flex-1 w-full">
         {groups.map((group) => (

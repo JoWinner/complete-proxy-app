@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { StoreModal } from "@/components/ui/store-modal";
-import { Button } from "@/components/ui/activity-button";
+import { Button } from "@/components/ui/dashboard-button";
 
 interface AlertModalProps {
   isOpen: boolean;

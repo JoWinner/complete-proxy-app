@@ -18,19 +18,19 @@ export const NavigationAction = ({
     <div className="flex flex-col space-y-1 ">
       <ActionTooltip side="right" align="center" label="Go Shopping">
         <Link href="/">
-          <button className="group flex items-center">
+          <div className="group flex items-center">
             <div className="flex mx-3 h-[48px] w-[48px] rounded-[24px] group-hover:rounded-[16px] transition-all overflow-hidden items-center justify-center bg-background dark:bg-neutral-700 group-hover:bg-indigo-500">
               <ShoppingBag
                 className="group-hover:text-white transition text-indigo-500"
                 size={25}
               />
             </div>
-          </button>
+          </div>
         </Link>
       </ActionTooltip>
       {isSeller && (
         <ActionTooltip side="right" align="center" label="Add group">
-          <button
+          <div
             onClick={() => onOpen("createGroup")}
             className="group flex items-center"
           >
@@ -40,19 +40,19 @@ export const NavigationAction = ({
                 size={25}
               />
             </div>
-          </button>
+          </div>
         </ActionTooltip>
       )}
-      <ActionTooltip side="right" align="center" label="Activity">
-        <Link href={`/dashboard/activity/profile/${profileId}`}>
-          <button className="group flex items-center">
+      <ActionTooltip side="right" align="center" label="Dashboard">
+        <Link href={`/home/dashboard/profile/${profileId}`}>
+          <div className="group flex items-center">
             <div className="flex mx-3 h-[48px] w-[48px] rounded-[24px] group-hover:rounded-[16px] transition-all overflow-hidden items-center justify-center bg-background dark:bg-neutral-700 group-hover:bg-orange-500">
               <Sliders
                 className="group-hover:text-white transition text-orange-500"
                 size={25}
               />
             </div>
-          </button>
+          </div>
         </Link>
       </ActionTooltip>
     </div>

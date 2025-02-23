@@ -100,10 +100,10 @@ export async function POST(req: Request) {
 
 export async function GET(req: Request) {
   try {
-    const profile = await currentProfile();
-    if (!profile) {
-      return new NextResponse("Unauthenticated", { status: 403 });
-    }
+    // const profile = await currentProfile();
+    // if (!profile) {
+    //   return new NextResponse("Unauthenticated", { status: 403 });
+    // }
     const { searchParams } = new URL(req.url);
     const searchQuery = searchParams.get("name") || undefined;
     const categoryId = searchParams.get("categoryId") || undefined;

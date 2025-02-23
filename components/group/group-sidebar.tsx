@@ -159,7 +159,7 @@ export const GroupSidebar = async ({ groupId }: GroupSidebarProps) => {
   );
 
   if (!group) {
-    return redirect("/dashboard");
+    return redirect("/home");
   }
 
   const role = group.members.find(

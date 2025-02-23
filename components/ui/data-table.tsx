@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/activity-button";
+import { Button } from "@/components/ui/dashboard-button";
 import { Input } from "@/components/ui/input";
 
 import {

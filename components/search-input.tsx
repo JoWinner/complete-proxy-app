@@ -10,7 +10,7 @@ import { toast } from "react-hot-toast";
 import { useDebounce } from "@/hooks/use-debounce";
 
 import { Input } from "@/components/ui/input";
-import { Button } from "./ui/activity-button";
+import { Button } from "./ui/dashboard-button";
 
 export const SearchInput = () => {
   const router = useRouter();
