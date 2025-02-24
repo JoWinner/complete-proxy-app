@@ -7,11 +7,11 @@ import { initialProfile } from "@/lib/initial-profile";
 
 const HomeLayout = async ({ children }: { children: React.ReactNode }) => {
   const profile = await initialProfile();
-  // const { redirectToSignIn } = await auth()
+  const { redirectToSignIn } = await auth()
 
-  // if (!profile) {
-  //   return redirectToSignIn();
-  // }
+  if (!profile) {
+    return redirectToSignIn();
+  }
 
   return (
     <div className="h-full">
