@@ -6,7 +6,7 @@ import Categories from "@/components/category-list";
 import { initialProfile } from "@/lib/initial-profile";
 
 const HomeLayout = async ({ children }: { children: React.ReactNode }) => {
-  // const profile = await initialProfile();
+  const profile = await initialProfile();
   // const { redirectToSignIn } = await auth()
 
   // if (!profile) {
