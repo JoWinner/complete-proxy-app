@@ -20,7 +20,7 @@ const DashboardPage = () => {
       <div className="w-full ">
         <div className="aspect-square relative w-full h-[700px] md:h-screen ">
           <Image
-            src="/images/4-hero.png"
+            src="/images/1-hero.jpeg"
             alt="/"
             fill
             className="aspect-square object-cover "
